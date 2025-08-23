@@ -6,7 +6,7 @@ Steps to reproduce:
     1. Send a POST request to create a booking
     2. Fetch booking ID
     3. Send a GET request to get created booking by booking ID
-    2. Verify response
+    4. Verify response
 
 Expected: 200 status code and json object with booking details in the response body
 

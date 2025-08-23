@@ -1,0 +1,13 @@
+Title: Get booking by invalid booking ID returns incorrect error response
+
+Description: If user sends a GET request to get a booking by booking ID, using invalid ID. API returns invalid error status code and message
+
+Steps to reproduce:
+    1. Send a GET request to get created booking by booking ID using invalid ID (e.g. string value)
+    2. Verify response
+
+Expected: 400 status code and some meaningful error message
+
+Actual: 405 "Method Not Allowed" status code and empty response body
+
+Screen recording: https://imgur.com/a/E0wXkdy
