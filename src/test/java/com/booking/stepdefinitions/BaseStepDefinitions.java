@@ -1,8 +1,10 @@
 package com.booking.stepdefinitions;
 
 import com.booking.entities.LoginRequestBody;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.AfterEach;
 
@@ -14,6 +16,8 @@ public class BaseStepDefinitions {
 
     protected String token;
     protected Response response;
+
+    protected Gson gson;
 
     @Given("user logged in as an admin")
     public void loginAsAnAdmin() {
@@ -56,5 +60,10 @@ public class BaseStepDefinitions {
         response.then()
                 .statusCode(403)
                 .body("error", is("Invalid token"));
+    }
+
+    @Then("response code should be {int}")
+    public void responseCodeShouldBe(int expectedStatusCode) {
+        response.then().statusCode(expectedStatusCode);
     }
 }
