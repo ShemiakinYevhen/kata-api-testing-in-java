@@ -16,7 +16,7 @@ public class PropertiesReader {
       Initialization of application properties using constant PROPERTY_FILE_PATH variable
      */
     static {
-        try (FileInputStream input = new FileInputStream(PROPERTY_FILE_PATH)) {
+        try (FileInputStream input = new FileInputStream(System.getProperty("user.dir") + PROPERTY_FILE_PATH)) {
             properties.load(input);
         } catch (IOException e) {
             throw new ArgumentAccessException(String.format("Filed to load properties file using this path: %s\n%s", PROPERTY_FILE_PATH, e.getMessage()));

@@ -5,6 +5,7 @@ Feature: Get booking by ID negative tests
     Given user logged in as an admin
     And access token is valid
     When user sends GET request to get a booking by "invalid" ID
+    #Next steps will be failing until AT-6 is resolved
     Then response code should be 400
     #TBD: update when AT-6 is fixed
     And booking response should contain the error message "Invalid booking ID"
