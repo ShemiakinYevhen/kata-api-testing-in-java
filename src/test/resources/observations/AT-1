@@ -1,6 +1,6 @@
-Title: Swagger "Try it out" feature returns 404 on all requests.
+Title: Swagger "Try it out" feature returns 404 on all requests
 
-Description: Both controllers (booking and auth) are giving 404 status code and html error page in the response.
+Description: Both controllers (booking and auth) are giving 404 status code and html error page in the response
 
 Steps to reproduce:
     1. Open any swagger url (https://automationintesting.online/auth/swagger-ui/index.html or https://automationintesting.online/booking/swagger-ui/index.html)

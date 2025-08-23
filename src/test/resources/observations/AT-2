@@ -1,11 +1,11 @@
-Title: Auth logout request returns 404.
+Title: Auth logout request returns 404
 
-Description: Despite using valid token verified via /validate request, /logout request returns 404 status code and html error page.
+Description: Despite using valid token verified via /validate request, /logout request returns 404 status code and html error page
 
 Steps to reproduce:
     1. Send a request to login using "admin" and "password" credentials
     2. Verify token is valid using /validate request
-    3. Send a request to logout using created and verified token.
+    3. Send a request to logout using created and verified token
 
 Expected: Valid response should be displayed with 200 status code and empty json object body
 

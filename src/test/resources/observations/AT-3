@@ -1,0 +1,30 @@
+Title: Create booking POST request does not return booking data
+
+Description: As per Swagger documentation POST request to create a booking in case of success should return 200 status code and booking details object in the response body
+
+Steps to reproduce:
+    1. Send a POST request to create a booking
+    2. Verify response
+
+Expected: 200 status code and booking details json in the response body
+
+Actual: 200 status code and empty json array in the response body
+
+Note: Additionally expected response described in Swagger contains duplicated "bookingid" variable
+
+Screen recording: https://imgur.com/a/DLSp9xN
+
+Example json payload:
+{
+  "bookingid": 1236,
+  "roomid": 1326,
+  "firstname": "Tripp",
+  "lastname": "Phelipeau",
+  "depositpaid": true,
+  "email": "tphelipeau0@constantcontact.com",
+  "phone": "+1-500-673-1886",
+  "bookingdates": {
+    "checkin": "2025-11-28",
+    "checkout": "2025-12-04"
+  }
+}
