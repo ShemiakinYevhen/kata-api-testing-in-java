@@ -1,6 +1,6 @@
 package com.booking.stepdefinitions;
 
-import com.booking.model.LoginRequestBody;
+import com.booking.entities.LoginRequestBody;
 import com.google.gson.JsonObject;
 import io.cucumber.java.en.Given;
 import io.restassured.response.Response;

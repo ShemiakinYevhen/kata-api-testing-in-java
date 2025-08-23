@@ -12,8 +12,8 @@ public class PropertiesReader {
     private static final String PROPERTY_FILE_PATH = "/src/test/resources/application.properties";
     private static final Properties properties = new Properties();
 
-    /**
-     * Initialization of application properties using constant PROPERTY_FILE_PATH variable
+    /*
+      Initialization of application properties using constant PROPERTY_FILE_PATH variable
      */
     static {
         try (FileInputStream input = new FileInputStream(PROPERTY_FILE_PATH)) {
