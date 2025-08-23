@@ -41,8 +41,10 @@ public class BaseStepDefinitions {
 
     @AfterEach
     public void tearDown() {
-        logout();
-        verifyTokenIsCancelled();
+        if (token != null) {
+            logout();
+            verifyTokenIsCancelled();
+        }
     }
 
     private void logout() {
