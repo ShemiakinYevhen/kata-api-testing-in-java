@@ -1,0 +1,19 @@
+Title: Swagger "Try it out" feature returns 404 on all requests.
+
+Description: Both controllers (booking and auth) are giving 404 status code and html error page in the response.
+
+Steps to reproduce:
+    1. Open any swagger url (https://automationintesting.online/auth/swagger-ui/index.html or https://automationintesting.online/booking/swagger-ui/index.html)
+    2. Expand any request details (e.g. auth -> login)
+    3. Click on "Try it out" button
+    4. Enter "admin" value for "username" field
+    5. Enter "password" value for "password" field
+    6. Click on "Execute" button
+
+Expected: Valid response should be displayed with 200 status code and body containing "token" field with token value
+
+Actual: Error response is displayed with 404 status code and html error page body
+
+Note: It appears that swagger does not add "/api" path into url, so as a workaround it can be manually added in the postman for example
+
+Screen recording: https://imgur.com/a/ii9nXX4
