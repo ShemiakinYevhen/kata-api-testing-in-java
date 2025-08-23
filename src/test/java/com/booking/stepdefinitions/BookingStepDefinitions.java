@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static com.booking.services.BookingService.getBookingByIdRequest;
 import static com.booking.services.BookingService.postCreateBookingRequest;
 import static org.junit.Assert.assertEquals;
 
@@ -28,19 +29,19 @@ public class BookingStepDefinitions extends BaseStepDefinitions {
         response = postCreateBookingRequest(bookingDetails);
     }
 
-    @And("create booking response should match the {string} json scheme")
+    @And("booking response should match the {string} json scheme")
     public void createBookingResponseShouldMatchTheJsonScheme(String schemeFileName) {
         response.then().assertThat().body(JsonSchemaValidator
                 .matchesJsonSchemaInClasspath("schemes/" + schemeFileName + ".json"));
     }
 
-    @And("create booking response data should match data given by user")
+    @And("booking response data should match data given by user")
     public void createBookingResponseDataShouldMatchDataGivenByUser() {
         Booking actualBookingDetails = gson.fromJson(response.jsonPath().getString("booking"), Booking.class);
         assertEquals("Booking details data is not as expected!", bookingDetails, actualBookingDetails);
     }
 
-    @And("create booking response should contain the error message {string}")
+    @And("booking response should contain the error message {string}")
     public void createBookingResponseShouldContainTheErrorMessage(String expectedErrors) {
         List<String> expectedErrorMessages = Arrays.asList(expectedErrors.split("/"));
         List<String> actualErrorMessages = response.jsonPath().getList("errors");
@@ -49,5 +50,16 @@ public class BookingStepDefinitions extends BaseStepDefinitions {
         Collections.sort(actualErrorMessages);
 
         assertEquals("Error messages are not as expected!", expectedErrorMessages, actualErrorMessages);
+    }
+
+    @When("user sends GET request to get a booking by saved ID")
+    public void userSendsGETRequestToGetABookingBySavedID() {
+        String bookingId = String.valueOf(bookingDetails.getBookingId());
+        response = getBookingByIdRequest(token, bookingId);
+    }
+
+    @When("user sends GET request to get a booking by {string} ID")
+    public void userSendsGETRequestToGetABookingByID(String invalidBookingID) {
+        response = getBookingByIdRequest(token, invalidBookingID);
     }
 }

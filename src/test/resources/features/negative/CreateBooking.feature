@@ -7,7 +7,7 @@ Feature: Create booking positive tests
       | <firstName> | <lastName> | <depositPaid> | <email> | <phone> | <checkIn> | <checkOut> | <roomId> |
     When user sends POST request to create a booking
     Then response code should be 400
-    And create booking response should contain the error message "<errorMessage>"
+    And booking response should contain the error message "<errorMessage>"
 
     Examples:
       | firstName           | lastName                        | depositPaid | email                           | phone                  | checkIn    | checkOut   | roomId | errorMessage                                                |
