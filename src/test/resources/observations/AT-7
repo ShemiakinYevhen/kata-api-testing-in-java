@@ -1,0 +1,29 @@
+Title: User is able to create a booking without phone number
+
+Description: If user sends a POST request to create a booking without phone number. API returns 200 status code
+
+Steps to reproduce:
+    1. Send a POST request to create a booking without phone number in it's body
+    2. Verify response
+
+Expected: 400 status code and some meaningful error message like "must not be null"
+
+Actual: 200 status code and empty response body
+
+Note: Might not be an issue, but should be clarified
+
+Screen recording: https://imgur.com/a/pa2NgSv
+
+Example json payload:
+{
+    "bookingid": 138,
+    "roomid": 222,
+    "firstname": "Tripp",
+    "lastname": "Phelipeau",
+    "depositpaid": true,
+    "email": "tphelipeau0@constantcontact.com",
+    "bookingdates": {
+        "checkin": "2025-08-28",
+        "checkout": "2025-09-04"
+    }
+}
