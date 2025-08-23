@@ -1,0 +1,30 @@
+Title: Get booking by booking ID returns incorrect response
+
+Description: If user sends a GET request to get a booking by booking ID, using valid ID. API returns error status code and message
+
+Steps to reproduce:
+    1. Send a POST request to create a booking
+    2. Fetch booking ID
+    3. Send a GET request to get created booking by booking ID
+    2. Verify response
+
+Expected: 200 status code and json object with booking details in the response body
+
+Actual: 405 "Method Not Allowed" status code and empty response body
+
+Screen recording: https://imgur.com/a/7maysCk
+
+Example json payload:
+{
+  "bookingid": 444,
+  "roomid": 444,
+  "firstname": "Tripp",
+  "lastname": "Phelipeau",
+  "depositpaid": true,
+  "email": "tphelipeau0@constantcontact.com",
+  "phone": "+1234567825",
+  "bookingdates": {
+    "checkin": "2025-11-28",
+    "checkout": "2025-12-04"
+  }
+}
