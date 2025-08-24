@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static com.booking.util.ContextHelper.getContextHelperInstance;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BookingStepDefinitions {
@@ -69,5 +70,44 @@ public class BookingStepDefinitions {
     @When("user sends GET request to get a booking by {string} ID")
     public void userSendsGETRequestToGetABookingByID(String invalidBookingID) {
         contextHelper.setResponse(contextHelper.getBooking().getBookingByIdRequest(contextHelper.getToken(), invalidBookingID));
+    }
+
+    @When("user sends PUT request to update a booking using saved data")
+    public void userSendsPUTRequestToUpdateABooking() {
+        contextHelper.setResponse(contextHelper.getBooking().updateBookingByIdRequest(
+                contextHelper.getToken(),
+                String.valueOf(contextHelper.getBookingDetails().getBookingId()),
+                contextHelper.getBookingDetailsJsonBody()
+        ));
+    }
+
+    @When("user sends DELETE request to delete a booking by ID from saved data")
+    public void userSendsDELETERequestToDeleteABooking() {
+        contextHelper.setResponse(contextHelper.getBooking().deleteBookingByIdRequest(
+                contextHelper.getToken(),
+                String.valueOf(contextHelper.getBookingDetails().getBookingId())
+        ));
+    }
+
+    @And("response should be empty json object")
+    public void responseShouldBeEmptyJsonObject() {
+        contextHelper.getResponse().then().body(equalTo("{}"));
+    }
+
+    @When("user sends PUT request to update a booking by {string} ID")
+    public void userSendsPUTRequestToUpdateABookingByID(String invalidBookingID) {
+        contextHelper.setResponse(contextHelper.getBooking().updateBookingByIdRequest(
+                contextHelper.getToken(),
+                invalidBookingID,
+                contextHelper.getBookingDetailsJsonBody()
+        ));
+    }
+
+    @When("user sends DELETE request to delete a booking by {string} ID")
+    public void userSendsDELETERequestToDeleteABookingByID(String invalidBookingID) {
+        contextHelper.setResponse(contextHelper.getBooking().deleteBookingByIdRequest(
+                contextHelper.getToken(),
+                invalidBookingID
+        ));
     }
 }

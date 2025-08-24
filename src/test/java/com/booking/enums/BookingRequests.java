@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 public enum BookingRequests {
 
     CREATE_BOOKING("/booking"),
-    GET_BOOKING_BY_ID("/booking/%s");
+    GET_OR_UPDATE_OR_DELETE_BOOKING_BY_ID("/booking/%s");
 
     private final String path;
 
