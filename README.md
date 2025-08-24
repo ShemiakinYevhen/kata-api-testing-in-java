@@ -104,3 +104,9 @@ Also, please note that some tests have comments related to observation status.
 - AT-5 - Get booking by booking ID returns incorrect response
 - AT-6 - Get booking by invalid booking ID returns incorrect error response
 - AT-7 - User is able to create a booking without phone number or email
+- AT-8 - Update and delete booking by invalid booking ID returns incorrect error response
+- AT-9 - Update booking by valid booking ID returns error response
+- AT-10 - Delete booking by valid booking ID returns error response
+- AT-11 - Get booking by non-existent booking ID returns incorrect error response
+- AT-12 - Update and delete booking by non-existent booking ID returns incorrect error response
+- AT-13 - Update booking using invalid data returns wrong error response
