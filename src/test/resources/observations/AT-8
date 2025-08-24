@@ -1,0 +1,13 @@
+Title: Update and delete booking by invalid booking ID returns incorrect error response
+
+Description: If user sends a PUT or DELETE request to update or delete a booking by booking ID, using invalid ID. API returns invalid error status code and message
+
+Steps to reproduce:
+    1. Send a PUT or DELETE request to update or delete a booking by booking ID using invalid ID (e.g. string value)
+    2. Verify response
+
+Expected: 400 status code and some meaningful error message
+
+Actual: 401 "Unauthorized" status code and "{ "error": "Authentication required" }" response body
+
+Screen recording: https://imgur.com/a/ZVCkMzT

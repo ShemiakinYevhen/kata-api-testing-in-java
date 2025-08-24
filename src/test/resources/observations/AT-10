@@ -1,0 +1,30 @@
+Title: Delete booking by valid booking ID returns error response
+
+Description: If user sends a DELETE request to delete a booking by booking ID, using valid ID. API returns error status code and message
+
+Steps to reproduce:
+    1. Send a POST request to create a booking
+    2. Fetch booking ID
+    3. Send a DELETE request to delete created booking by booking ID
+    4. Verify response
+
+Expected: 200 status code and json object with booking details in the response body
+
+Actual: 401 "Unauthorized" status code and empty response body
+
+Screen recording: https://imgur.com/a/sPDNmVS
+
+Example json payload:
+{
+  "bookingid": 444,
+  "roomid": 444,
+  "firstname": "Tripp",
+  "lastname": "Phelipeau",
+  "depositpaid": true,
+  "email": "tphelipeau0@constantcontact.com",
+  "phone": "+1234567825",
+  "bookingdates": {
+    "checkin": "2025-11-28",
+    "checkout": "2025-12-04"
+  }
+}
