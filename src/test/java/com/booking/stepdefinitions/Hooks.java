@@ -8,7 +8,7 @@ import static org.hamcrest.Matchers.is;
 
 public class Hooks {
 
-    private ContextHelper contextHelper = getContextHelperInstance();
+    private final ContextHelper contextHelper = getContextHelperInstance();
 
     @AfterEach
     public void tearDown() {

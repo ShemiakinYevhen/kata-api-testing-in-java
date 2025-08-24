@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BookingStepDefinitions {
 
-    private ContextHelper contextHelper = getContextHelperInstance();
+    private final ContextHelper contextHelper = getContextHelperInstance();
 
     @Then("response code should be {int}")
     public void responseCodeShouldBe(int expectedStatusCode) {

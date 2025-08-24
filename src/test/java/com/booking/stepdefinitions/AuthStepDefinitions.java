@@ -10,7 +10,7 @@ import static org.hamcrest.Matchers.*;
 
 public class AuthStepDefinitions {
 
-    private ContextHelper contextHelper = getContextHelperInstance();
+    private final ContextHelper contextHelper = getContextHelperInstance();
 
     @Given("user logged in as an admin")
     public void loginAsAnAdmin() {
