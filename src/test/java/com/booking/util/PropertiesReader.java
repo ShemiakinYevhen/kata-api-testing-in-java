@@ -1,24 +1,25 @@
 package com.booking.util;
 
-import org.junit.jupiter.params.aggregator.ArgumentAccessException;
-
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.security.InvalidParameterException;
+import java.util.Objects;
 import java.util.Properties;
 
 public class PropertiesReader {
 
-    private static final String PROPERTY_FILE_PATH = "/src/test/resources/application.properties";
-    private static final Properties properties = new Properties();
+    private static final String PROPERTY_FILE_PATH = System.getProperty("user.dir") + "/src/test/resources/application.properties";
+    private static final Properties properties = loadProperties();
 
-    //Initialization of application properties using constant PROPERTY_FILE_PATH variable
-    static {
-        try (FileInputStream input = new FileInputStream(System.getProperty("user.dir") + PROPERTY_FILE_PATH)) {
+    private PropertiesReader() {}
+
+    private static Properties loadProperties() {
+        Properties properties = new Properties();
+        try (FileInputStream input = new FileInputStream(PROPERTY_FILE_PATH)) {
             properties.load(input);
         } catch (IOException e) {
-            throw new ArgumentAccessException(String.format("Filed to load properties file using this path: %s\n%s", PROPERTY_FILE_PATH, e.getMessage()));
+            throw new IllegalStateException(String.format("Filed to load properties file using this path: %s\n%s", PROPERTY_FILE_PATH, e.getMessage()));
         }
+        return properties;
     }
 
     /**
@@ -28,9 +29,21 @@ public class PropertiesReader {
      * @return string variable containing value of the property
      */
     public static String getProperty(String key) {
-        if (key.isBlank()) throw new InvalidParameterException(String.format("Invalid key provided: '%s'", key));
+        validateKey(key);
         String value = properties.getProperty(key);
-        if (value.isBlank()) throw new InvalidParameterException(String.format("Invalid property value: '%s' for key '%s'", value, key));
+        validateValue(value);
         return value;
+    }
+
+    private static void validateKey(String key) {
+        if (Objects.isNull(key) || key.isBlank()) {
+            throw new IllegalArgumentException("Invalid key provided");
+        }
+    }
+
+    private static void validateValue(String value) {
+        if (Objects.isNull(value) || value.isBlank()) {
+            throw new IllegalArgumentException("Invalid property value for key '" + value + "'");
+        }
     }
 }
