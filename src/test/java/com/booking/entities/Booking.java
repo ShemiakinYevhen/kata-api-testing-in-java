@@ -49,6 +49,7 @@ public class Booking {
         this.phone = bookingDetails.getOrDefault("phone", "+1234567890");
         this.bookingDates = new BookingDates(
                 bookingDetails.getOrDefault("checkIn", LocalDateTime.now().plusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))),
-                bookingDetails.getOrDefault("checkOut", LocalDateTime.now().plusDays(2).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))));
+                bookingDetails.getOrDefault("checkOut", LocalDateTime.now().plusDays(2).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+        );
     }
 }
