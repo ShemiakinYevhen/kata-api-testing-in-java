@@ -4,7 +4,7 @@ Feature: Delete booking by ID positive tests
   Scenario: User should be able to delete a booking using valid ID
     Given user enters booking details
       | firstName | lastName  | depositPaid | email                           | phone           | checkIn    | checkOut   | roomId |
-      | Tripp     | Phelipeau | true        | tphelipeau0@constantcontact.com | +1-500-673-1886 | 2025-08-28 | 2025-09-04 | 215    |
+      | Tripp     | Phelipeau | true        | tphelipeau0@constantcontact.com | +1-500-673-1886 | 2025-08-28 | 2025-09-04 | 431    |
     When user sends POST request to create a booking
     Then response code should be 200
     #Next steps will be failing until AT-3 is resolved
