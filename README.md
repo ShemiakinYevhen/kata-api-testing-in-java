@@ -69,6 +69,7 @@ If both previous options do not fit you, you can always rely on Maven commands:
 Available cucumber filter tags:
 - @Auth and @NoAuth - based on test requirements for authentication
 - @Positive and @Negative - based on tests' purpose
+- @InvalidID, @NonExistentID and @InvalidData - based on different types of negative tests
 - @GetBookingById and @CreateBooking - based on API feature/endpoint
 
 ### !IMPORTANT!
