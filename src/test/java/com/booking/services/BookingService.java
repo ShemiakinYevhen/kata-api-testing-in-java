@@ -1,6 +1,5 @@
 package com.booking.services;
 
-import com.booking.entities.Booking;
 import io.restassured.response.Response;
 
 import static com.booking.enums.BookingRequests.CREATE_BOOKING;
@@ -9,14 +8,14 @@ import static io.restassured.RestAssured.given;
 
 public class BookingService extends BaseService {
 
-    public static Response postCreateBookingRequest(Booking bookingDetails) {
+    public Response postCreateBookingRequest(String requestBody) {
         return given()
                 .spec(requestSpecification)
-                .body(gson.toJson(bookingDetails))
+                .body(requestBody)
                 .post(CREATE_BOOKING.getPath());
     }
 
-    public static Response getBookingByIdRequest(String token, String bookingId) {
+    public Response getBookingByIdRequest(String token, String bookingId) {
         return given()
                 .spec(requestSpecification)
                 .header("Cookie", token)

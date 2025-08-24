@@ -35,6 +35,10 @@ public class Booking {
     @SerializedName("bookingdates")
     private BookingDates bookingDates;
 
+    /*
+        Utilized getOrDefault() to handle case when any field is not mentioned in the .feature file scenario.
+        Can be removed to throw an exception, depending on preferences.
+    */
     public Booking(Map<String, String> bookingDetails) {
         this.bookingId = new Random().nextInt(1000);
         this.roomId = Integer.parseInt(bookingDetails.getOrDefault("roomId", "1"));
