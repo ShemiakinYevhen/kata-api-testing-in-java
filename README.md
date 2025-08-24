@@ -50,7 +50,7 @@ Tests can be executed using different approaches:
 ### 1. TestRunner class
 Using this class you can execute all existing tests 
 
-![img_3.png](testRunnerScreenshot.png)
+![img_3.png](images/testRunnerScreenshot.png)
 
 ### 2. Feature files
 In /src/test/resources there is a /features package which contains two other packages: 
@@ -59,7 +59,7 @@ In /src/test/resources there is a /features package which contains two other pac
 
 Both packages contain .feature files and inside of them you can see features and scenarios to execute a single test or a whole feature suite.
 
-![img_2.png](featureFileScreenshot.png)
+![img_2.png](images/featureFileScreenshot.png)
 
 ### 3. Maven command
 If both previous options do not fit you, you can always rely on Maven commands:
@@ -79,7 +79,7 @@ So using random room IDs would not fit. Also, it is possible to implement additi
 For example, we can retrieve int value of 'daysForward' for both checkin and checkout, then process them using LocalDateTime class and format back to String to save in our custom Booking class.
 Implementation would look something like this:
 
-![img.png](daysForwardImplementationExample.png)
+![img.png](images/daysForwardImplementationExample.png)
 
 ## 7. Reporting
 
