@@ -1,0 +1,13 @@
+Title: Update and delete booking by non-existent booking ID returns incorrect error response
+
+Description: If user sends a PUT or DELETE request to update or delete a booking by booking ID, using non-existent ID. API returns invalid error status code and message
+
+Steps to reproduce:
+    1. Send a PUT or DELETE request to update or delete a booking by booking ID using non-existent ID (e.g. 123456789)
+    2. Verify response
+
+Expected: 404 status code and some meaningful error message
+
+Actual: 401 "Unauthorized" status code and "{ "error": "Authentication required" }" response body
+
+Screen recording: https://imgur.com/a/P9hS4OV

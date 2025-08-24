@@ -1,0 +1,29 @@
+Title: Update booking using invalid data returns wrong error response
+
+Description: If user sends a PUT request to update a booking by booking ID, using invalid data. API returns wrong error status code and message
+
+Steps to reproduce:
+    1. Send a POST request to create a booking
+    2. Fetch booking ID
+    3. Send a PUT request to update created booking by booking ID using invalid data (missing email, phone, etc)
+    4. Verify response
+
+Expected: 400 status code and meaningful error message (like for creating booking with invalid data, check /features/negative/CreateBooking.feature)
+
+Actual: 401 "Unauthorized" status code and empty response body
+
+Screen recording: https://imgur.com/a/eTRo0pG
+
+Example json payload:
+{
+  "bookingid": 444,
+  "roomid": 444,
+  "lastname": "Phelipeau",
+  "depositpaid": true,
+  "email": "tphelipeau0@constantcontact.com",
+  "phone": "+1234567825",
+  "bookingdates": {
+    "checkin": "2025-11-28",
+    "checkout": "2025-12-04"
+  }
+}
