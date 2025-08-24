@@ -1,6 +1,7 @@
 @Auth @DeleteBookingById @Negative
 Feature: Delete booking by ID negative tests
 
+  @InvalidID
   Scenario: User should get expected error messages when trying to delete booking by ID using invalid ID
     Given user logged in as an admin
     And access token is valid
@@ -10,6 +11,7 @@ Feature: Delete booking by ID negative tests
     #TBD: update when AT-8 is fixed
     And booking response should contain the error message "Invalid booking ID"
 
+  @NonExistentID
   Scenario: User should get expected error messages when trying to delete booking by ID using non-existent ID
     Given user logged in as an admin
     And access token is valid

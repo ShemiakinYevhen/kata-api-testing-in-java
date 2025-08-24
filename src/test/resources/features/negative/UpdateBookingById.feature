@@ -1,6 +1,7 @@
 @Auth @UpdateBookingById @Negative
 Feature: Update booking by ID negative tests
 
+  @InvalidID
   Scenario: User should get expected error messages when trying to update booking by ID using invalid ID
     Given user enters booking details
       | firstName | lastName  | depositPaid | email                           | phone           | checkIn    | checkOut   | roomId |
@@ -13,6 +14,7 @@ Feature: Update booking by ID negative tests
     #TBD: update when AT-8 is fixed
     And booking response should contain the error message "Invalid booking ID"
 
+  @NonExistentID
   Scenario: User should get expected error messages when trying to update booking by ID using non-existent ID
     Given user enters booking details
       | firstName | lastName  | depositPaid | email                           | phone           | checkIn    | checkOut   | roomId |
@@ -25,6 +27,7 @@ Feature: Update booking by ID negative tests
     #TBD: update when AT-12 is fixed
     And booking response should contain the error message "Non-existent booking ID"
 
+  @InvalidData
   Scenario Outline: User should get expected error message when trying to update a booking using invalid data
     Given user enters booking details
       | firstName | lastName  | depositPaid | email                           | phone           | checkIn    | checkOut   | roomId |
