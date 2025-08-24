@@ -1,5 +1,5 @@
 @NoAuth @CreateBooking @Negative
-Feature: Create booking positive tests
+Feature: Create booking negative tests
 
   Scenario Outline: User should be able to create a booking using valid data
     Given user enters booking details
