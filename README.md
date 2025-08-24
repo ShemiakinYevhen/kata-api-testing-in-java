@@ -1,55 +1,97 @@
 # Kata API Testing in Java
 
-API Testing and Java Exercise: Setting up a Basic API Test Automation Framework.
+This project implements test automation framework for RESTful API based on Java and its' most popular libraries. At current stage of implementation it covers scenarios of creating a booking and fetching booking details by booking ID.
 
-## Objective
-The objective of this exercise is to evaluate your knowledge on API testing and Java by setting up a basic API Test Automation framework using Rest-Assured and Cucumber. You will need to create a test suite that executes a few tests against one endpoint of a hotel booking website and evaluates their responses.
+## 1. Overview
 
-## Background
-The application under test is a simple hotel booking website where you can book a room and also send a form with a request.
+Framework is built based on BDD approach using scenarios written in plain English, making it easier for non-technical members of the team to participate in product development.
 
-The website can be accessed at https://automationintesting.online/.
-
-The Swagger documentation for the two endpoints you will be testing can be found at:
-
-Booking endpoint: https://automationintesting.online/booking/swagger-ui/index.html
-Optionally, you also have the Authentican endpoint: https://automationintesting.online/auth/swagger-ui/index.html
-
-## Task
-You are provided with an extremely basic API test project.
-
-Please clone the project and create a new branch with your name. At the end, please push your branch to this project.
-
-The project to start from, can be found here: https://github.com/freddyschoeters/API_Testing_kata
-
-Your task is to set up an API Test Automation framework from this project using Java, Rest-Assured, and Cucumber (feel free to add more dependencies if required).
-
-It is up to you to define the test cases. You don’t need to have a full coverage, but you need to show enough variation on the types of tests that you would need to write and execute, and what to check in the response.
-
-This kata has the purpose to evaluate both your technical skills as well as your testing skills.
-
-`For this task, you will use the booking endpoint.`
+- API URL - https://automationintesting.online/.
+- Auth Swagger - https://automationintesting.online/auth/swagger-ui/index.html
+- Booking Swagger - https://automationintesting.online/booking/swagger-ui/index.html
 
 
-## Requirements
-* Use Java as the programming language
-* Use Rest-Assured as the API testing library
-* Use Cucumber as the BDD framework
-* Design your codebase using a proper Java design pattern
-* Write good tests with correct checks
-* Use Git for version control and push your codebase to an open GitHub repository
-* Make regular commits to demonstrate your progress
+## 2. Technologies utilized
 
+- Java 17 - programming language
+- Maven 4.0.0 - build library
+- Rest Assured 5.5.2 - API testing library
+- JSON Schema Validator 5.5.5 - JSON validation util library
+- Cucumber 7.22.2 - BDD framework
+- JUnit Jupiter 5.12.2 - Test library
+- JUnit Platform Suite 1.12.2 - Test discovery and test execution infrastructure
+- Lombok 1.18.38 - Annotations to reduce default code
+- GSON 2.11.0 - JSON manipulation library
 
-## Deliverables
-* Your branch pushed in the provided project.
-* A comprehensive test suite covering the scenarios mentioned above
-* A well-structured codebase with proper design patterns and comments
-* Regular commits demonstrating your progress
+## 3. Features Covered
 
-## Evaluation Criteria
-* Being able to successfully run the tests
-* Correctness and completeness of the test suite
-* Quality of the codebase (design patterns, structure, code quality, …)
-* Use of Rest-Assured and Cucumber features
-* Commit history and progress demonstration
+Following end-points are covered by the current implements version of the framework
+
+### 1. auth-controller
+- POST - Login
+- POST - Validate
+- POST - Logout
+
+### 2. booking-controller
+- GET - Get booking details by booking ID
+- POST - Create a booking
+
+## 5. Setup guide
+
+- Install Java 17 and Maven 4.0.0 or above.
+- Clone the repository
+- Open project in the IDE
+- Let project build
+- Reload Maven project if needed
+
+## 6. Run configurations
+
+Tests can be executed using different approaches:
+### 1. TestRunner class
+Using this class you can execute all existing tests 
+
+![img_3.png](testRunnerScreenshot.png)
+
+### 2. Feature files
+In /src/test/resources there is a /features package which contains two other packages: 
+- /negative package contains all negative tests which are supposed to verify how API reacts to incorrect behaviour. 
+- /positive package contains all positive tests which are supposed to verify API behaviour under normal conditions, a.k.a. happy-path.
+
+Both packages contain .feature files and inside of them you can see features and scenarios to execute a single test or a whole feature suite.
+
+![img_2.png](featureFileScreenshot.png)
+
+### 3. Maven command
+If both previous options do not fit you, you can always rely on Maven commands:
+- If you want to execute all tests just run "mvn clean test"
+- If you want to execute a specific group of tests you can always add "-Dcucumber.fiter.tags={}" option 
+
+Available cucumber filter tags:
+- @Auth and @NoAuth - based on test requirements for authentication
+- @Positive and @Negative - based on tests' purpose
+- @GetBookingById and @CreateBooking - based on API feature/endpoint
+
+## 7. Reporting
+
+Cucumber HTML report can be accessed at /target/cucumber-reports.html
+
+## 8. Test scenarios
+
+- Create booking positive scenario
+- Create booking negative scenario (contains 13 scenarios depending on input data)
+- Get booking by booking ID positive scenario
+- Get booking by booking ID negative scenario
+
+## 9. Open issues
+
+All open issues (observations) have reports which are located in /src/resources/observation.
+Each observation report has screen recording link attached and some of them have example payload json to make reproducing it easier.
+Also, please note that some tests have comments related to observation status.
+
+- AT-1 - Swagger "Try it out" feature returns 404 on all requests
+- AT-2 - Auth logout request returns 404
+- AT-3 - Create booking POST request does not return booking data
+- AT-4 - User is able to create a booking with check-in date in the past
+- AT-5 - Get booking by booking ID returns incorrect response
+- AT-6 - Get booking by invalid booking ID returns incorrect error response
+- AT-7 - User is able to create a booking without phone number or email
