@@ -1,7 +1,7 @@
 @NoAuth @CreateBooking @Negative
 Feature: Create booking negative tests
 
-  Scenario Outline: User should be able to create a booking using valid data
+  Scenario Outline: User should get expected error message when trying to create a booking using invalid data
     Given user enters booking details
       | firstName   | lastName   | depositPaid   | email   | phone   | checkIn   | checkOut   | roomId   |
       | <firstName> | <lastName> | <depositPaid> | <email> | <phone> | <checkIn> | <checkOut> | <roomId> |
