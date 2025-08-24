@@ -1,4 +1,4 @@
-package com.booking.stepdefinitions;
+package com.booking.stepdefinitions.auth;
 
 import com.booking.entities.LoginRequestBody;
 import com.booking.util.ContextHelper;
